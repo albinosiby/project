@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: black;
+            color: aliceblue;
+        }
+        .box{
+            position: absolute;
+            background: transparent;
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #button{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            width: 70px;
+            height: 30px;
+            background: #fff;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            font-size: 1em;
+            color: #111;
+            margin-top: 10px;
+        }
+        h2{
+            font-size: 2em;
+            color: #fff;
+            text-align: center;
+        }
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1em;
+            min-width: 400px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th{
+            padding: 10px 10px;
+            font-size: 1.3em;
+            border-bottom: 2px solid whitesmoke;
+        }
+        .content-table td {
+            padding: 10px 10px;
+        }
+        #Add_button{
+            width: 130px;
+            height: 30px;
+            background: #fff;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            font-size: 1em;
+            color: #111;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>
+            <h2>Student Details</h2>
+            <table class="content-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Roll Number</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.roll_number }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>
+                        <a href="{% url 'delete_student' student.pk %}"><button>Delete</button></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div id="button">
+                <a href="{% url 'add_student' %}"><button id="Add_button" >Add Student</button></a>
+            </div>
+           
+        </div>
+    </div>
+    
+</body>
+</html> 
